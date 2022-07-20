@@ -444,7 +444,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   //  empty_frames_++;
   //  return;
   //}
-
+  // Modification: if anyone in vision or range is empty, do nothing
   if (nullptr == in_vision_detections
       || nullptr == in_range_detections)
   //    && !in_range_detections->objects.empty())
@@ -474,7 +474,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
     ROS_INFO("[%s] Missing Camera-LiDAR TF or CameraInfo", __APP_NAME__);
     return;
   }
-
+  // Modification: if both vision and range are non-empty (detected), publish the results
   ROS_INFO("[%s] Detection found.", __APP_NAME__);
   fusion_objects = FuseRangeVisionDetections(in_vision_detections, in_range_detections);
   publisher_fused_objects_.publish(fusion_objects);
