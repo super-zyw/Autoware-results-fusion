@@ -714,4 +714,4 @@ ROSRangeVisionFusionApp::ROSRangeVisionFusionApp()
   processing_ = false;
   image_frame_id_ = "";
   overlap_threshold_ = 0.5;
-  empty_frames_ = 0;
+  empty_frames_ = 0;}
