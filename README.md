@@ -8,7 +8,11 @@ In the second terminal,
 ```
 cd Autoware/src/autoware/core_perception/range_vision_fusion/src/
 ```
-Replace this code with existing ```range_vision_fusion.cpp```
+There is a ``` range_vision_fusion.cpp```. Replace it with the code either in ```range_vision_fusion_v1.cpp``` or ```range_vision_fusion_v2.cpp``` in this repository.
+
+```range_vision_fusion_v1.cpp``` fuses the camera detection **AND** the Lidar detection
+
+```range_vision_fusion_v2.cpp``` fuses the camera detection **OR** the Lidar detection
 
 
 Go to Autoware
