@@ -451,7 +451,8 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
      || in_range_detections->objects.empty())
   {
     empty_frames_++;
-    return
+    publisher_fused_objects_.publish(fusion_objects);
+    return;
   }
     
   if (nullptr == in_vision_detections
