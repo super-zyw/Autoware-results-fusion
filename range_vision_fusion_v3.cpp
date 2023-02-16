@@ -460,7 +460,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   {
     publisher_fused_objects_.publish(in_range_detections);
     empty_frames_++;
-    ROS_INFO("[%s] Empty Lidar Detections.", __APP_NAME__);
+    ROS_INFO("[%s] Empty camera Detections.", __APP_NAME__);
     return;
   }
   if (nullptr == in_range_detections
@@ -469,7 +469,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   {
     publisher_fused_objects_.publish(in_vision_detections);
     empty_frames_++;
-    ROS_INFO("[%s] Empty Camera Detections.", __APP_NAME__);
+    ROS_INFO("[%s] Empty Lidar Detections.", __APP_NAME__);
     return;
   }
 
