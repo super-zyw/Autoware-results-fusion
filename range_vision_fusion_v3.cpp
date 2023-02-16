@@ -449,10 +449,10 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   // If YOLO or Lidar detections are empty, this corresponds to error injection
   if ( in_vision_detections->objects.empty()
      || in_range_detections->objects.empty())
-  (
+  {
     empty_frames_++;
     return
-  )
+  }
     
   if (nullptr == in_vision_detections
       && nullptr != in_range_detections
