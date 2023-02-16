@@ -436,21 +436,21 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   {
     ROS_INFO("[%s] Empty Detections. Make sure the vision and range detectors are running.", __APP_NAME__);
   }
-  
+
   // If YOLO or Lidar detections are Null, this corresponds to initialization stage
   if (nullptr == in_vision_detections
-      || nullptr == in_range_detections)
+      && nullptr == in_range_detections)
   {
     empty_frames_++;
-    ROS_INFO("[%s] Empty Camera and Lidar Detections.", __APP_NAME__);
+   // ROS_INFO("[%s] Empty Camera and Lidar Detections.", __APP_NAME__);
     return;
   }
-  
+
   // If YOLO or Lidar detections are empty, this corresponds to error injection
-  if ( in_vision_detections->objects.empty()
-     || in_range_detections->objects.empty())
+  if (nullptr == in_vision_detections || in_vision_detections->objects.empty())
   {
     empty_frames_++;
+    ROS_INFO("[%s] Empty Yolo detection, return");
     publisher_fused_objects_.publish(fusion_objects);
     return;
   }
@@ -468,7 +468,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
       && nullptr != in_vision_detections
       && !in_vision_detections->objects.empty())
   {
-    publisher_fused_objects_.publish(in_vision_detections);
+    //publisher_fused_objects_.publish(in_vision_detections);
     empty_frames_++;
     ROS_INFO("[%s] Empty Lidar Detections.", __APP_NAME__);
     return;
