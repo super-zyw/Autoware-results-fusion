@@ -446,7 +446,8 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
     return;
   }
   
-  // If YOLO or Lidar detections are empty, this corresponds to error injection
+  // If YOLO is null or YOLO is no detection, publish the empty fusion_objects
+  // The costmap is expected to change after injecting camera error, i.e., no fused costmap
   if (nullptr == in_vision_detections || in_vision_detections->objects.empty())
   {
     empty_frames_++;
