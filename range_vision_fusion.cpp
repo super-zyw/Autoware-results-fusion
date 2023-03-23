@@ -451,7 +451,7 @@ ROSRangeVisionFusionApp::SyncedDetectionsCallback(
   if (nullptr == in_vision_detections || in_vision_detections->objects.empty())
   {
     empty_frames_++;
-    ROS_INFO("[%s] Empty Yolo detection, return");
+    ROS_INFO("[%s] Empty Yolo detection, return", __APP_NAME__);
     publisher_fused_objects_.publish(fusion_objects);
     return;
   }
